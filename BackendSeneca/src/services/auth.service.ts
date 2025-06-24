@@ -148,7 +148,7 @@ class AuthService {
     const user = await User.findOne({ email });
     
     if (!user) {
-      // Ahora sí revelamos que el email no existe para mejor UX
+      // No existe ninguna cuenta con este email
       throw new Error('No existe una cuenta con este email');
     }
     

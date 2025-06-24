@@ -56,7 +56,33 @@ export class LoginComponent implements OnInit {
         },
         error: (error) => {
           this.isLoading = false;
-          this.showAlert('Error al iniciar sesión. Verifica tus credenciales.', 'error');
+
+          // Manejar diferentes tipos de errores
+          if (error.status === 401) {
+            // Credenciales incorrectas
+            this.showAlert('Email o contraseña incorrectos. Verifica tus credenciales.', 'error');
+          } else if (error.status === 403) {
+            // Cuenta no verificada
+            this.showAlert('Tu cuenta no ha sido verificada. Revisa tu email y haz clic en el enlace de verificación.', 'warning');
+          } else if (error.status === 404) {
+            // Usuario no encontrado
+            this.showAlert('No existe una cuenta con este email. Regístrate para crear una cuenta.', 'error');
+          } else if (error.status === 0) {
+            // Error de conexión
+            this.showAlert('Error de conexión. Verifica tu conexión a internet.', 'error');
+          } else if (error.status === 500) {
+            // Error del servidor
+            this.showAlert('Error en el servidor. Intenta nuevamente más tarde.', 'error');
+          } else if (error.error && error.error.message) {
+            // Mensaje específico del backend
+            this.showAlert(error.error.message, 'error');
+          } else if (error.message) {
+            // Mensaje de error general
+            this.showAlert(error.message, 'error');
+          } else {
+            // Error genérico
+            this.showAlert('Error al iniciar sesión. Intenta nuevamente.', 'error');
+          }
         }
       });
     }

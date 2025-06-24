@@ -14,9 +14,11 @@ Crea un archivo `.env` en la raíz:
 
 ```env
 PORT=3000
-NODE_ENV=development
-MONGODB_URI=mongodb://localhost:27017/testseneca
-JWT_SECRET=tu_jwt_secret_super_seguro
+MONGODB_URI=mongodb://localhost:27017/users
+BASE_URL=http://localhost:3000
+FRONTEND_URL=http://localhost:4200
+JWT_EXPIRES_IN=24h
+JWT_SECRET=supersecreto
 
 # Configuración de email (SMTP con Google)
 EMAIL_FROM=no-reply@tuapp.com
@@ -24,6 +26,10 @@ SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=tu_email@gmail.com
 SMTP_PASS=tu_password_de_aplicacion
+EMAIL_FROM=tu_email@gmail.com
+
+
+
 ```
 
 ### 3. Configurar URLs (opcional)

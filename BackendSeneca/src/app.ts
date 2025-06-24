@@ -25,7 +25,7 @@ mongoose.connect(config.mongodbUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 } as mongoose.ConnectOptions)
-  .then(() => console.log('MongoDB conectado'))
+  .then(() => console.log(`Entorno: ${config.mongodbUri}`))
   .catch((err) => console.error('Error conectando a MongoDB:', err));
 
 // Rutas (se agregarán luego)

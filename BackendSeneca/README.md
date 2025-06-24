@@ -24,7 +24,7 @@ Crea un archivo `.env` en la raíz o utiliza el .env-template pero renombralo a 
 PORT=3000
 MONGODB_URI=mongodb://localhost:27017/users
 BASE_URL=http://localhost:3000
-#Tanto el FRONTEND_URL y CORS_ORIGIN deben ser el mismo URL
+#Tanto el FRONTEND_URL y CORS_ORIGIN deben iguales los URLS
 FRONTEND_URL=http://localhost:4200   
 CORS_ORIGIN=http://localhost:4200
 JWT_EXPIRES_IN=24h

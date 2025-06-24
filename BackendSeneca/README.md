@@ -14,7 +14,7 @@ npm install
 ```
 
 ### 2. Configurar variables de entorno
-Crea un archivo `.env` en la raíz:
+Crea un archivo `.env` en la raíz o utiliza el .env-template pero renombralo a .env:
 
 ```env
 PORT=3000
@@ -40,7 +40,7 @@ EMAIL_FROM=tu_email@gmail.com
 
 ### Paso 2: Generar contraseña de aplicación
 1. En "Seguridad" → buscar "Contraseñas de aplicación"
-2. Selecciona "Otra" y dale un nombre (ej: "Backend Seneca")
+2. Selecciona y dale un nombre (ej: "Backend Seneca")
 3. Copia la contraseña generada (16 caracteres)
 
 ### Paso 3: Configurar en .env

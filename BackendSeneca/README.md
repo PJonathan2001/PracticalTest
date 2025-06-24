@@ -32,11 +32,6 @@ SMTP_USER=tu_email@gmail.com
 SMTP_PASS=tu_password_de_aplicacion
 EMAIL_FROM=tu_email@gmail.com
 
-
-
-
-
-
 ## 📧 Configuración SMTP con Google
 
 ### Paso 1: Activar verificación en dos pasos

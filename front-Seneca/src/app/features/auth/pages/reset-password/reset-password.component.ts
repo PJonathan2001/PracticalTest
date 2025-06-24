@@ -10,7 +10,8 @@ import { AlertComponent, AlertType } from '../../../../shared/components/alert/a
   selector: 'app-reset-password',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule, LoadingComponent, AlertComponent],
-  templateUrl: './reset-password.component.html'
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
   resetPasswordForm: FormGroup;

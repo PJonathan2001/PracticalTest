@@ -50,6 +50,15 @@ class AuthController {
       const result = await AuthService.forgotPassword(email);
       res.json(result);
     } catch (err) {
+      if (err instanceof Error) {
+        if (err.message === 'No existe una cuenta con este email') {
+          res.status(404).json({ error: err.message });
+          return;
+        } else if (err.message.includes('Error enviando el correo')) {
+          res.status(500).json({ error: err.message });
+          return;
+        }
+      }
       next(err);
     }
   }

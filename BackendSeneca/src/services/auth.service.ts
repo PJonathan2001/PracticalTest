@@ -148,8 +148,8 @@ class AuthService {
     const user = await User.findOne({ email });
     
     if (!user) {
-      // Por seguridad, no revelar si el email existe o no
-      return { message: 'Correo de recuperación enviado.' };
+      // Ahora sí revelamos que el email no existe para mejor UX
+      throw new Error('No existe una cuenta con este email');
     }
     
     const { generateToken } = await import('../utils/generateToken');
@@ -163,7 +163,7 @@ class AuthService {
     const resetLink = `${config.baseUrl}/api/auth/reset-password/${resetToken}`;
     
     const subject = 'Recupera tu contraseña';
-    const html = `<p>Hola,</p><p>Puedes restablecer tu contraseña haciendo clic en el siguiente enlace:</p><a href="${resetLink}">${resetLink}</a>`;
+    const html = `<p>Hola ${user.firstName || 'Usuario'},</p><p>Puedes restablecer tu contraseña haciendo clic en el siguiente enlace:</p><a href="${resetLink}">${resetLink}</a><p>Este enlace expira en 1 hora.</p>`;
     
     try {
       await MailService.sendMail(email, subject, html);
@@ -172,7 +172,7 @@ class AuthService {
       user.resetPasswordToken = undefined;
       user.resetPasswordExpires = undefined;
       await user.save();
-      throw new Error('Error enviando el correo de recuperación');
+      throw new Error('Error enviando el correo de recuperación. Por favor, intenta nuevamente.');
     }
     
     return { message: 'Correo de recuperación enviado.' };

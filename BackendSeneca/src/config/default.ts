@@ -10,7 +10,7 @@ export default {
   frontendUrl: process.env.FRONTEND_URL || 'http://localhost:4200',
   
   // Configuración de la base de datos
-  mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/testseneca',
+  mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/testsenecas',
   
   // Configuración de JWT
   jwtSecret: process.env.JWT_SECRET || 'supersecreto',

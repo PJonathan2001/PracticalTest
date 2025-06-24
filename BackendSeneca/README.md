@@ -1,6 +1,10 @@
 # Backend Seneca - API de Autenticación y Gestión de Usuarios
 
-Una API REST construida con Node.js, Express, TypeScript y MongoDB.
+Una API REST construida con 
+Node.js, 
+Express, 
+TypeScript,
+MongoDB.
 
 ## 🚀 Instalación y Ejecución
 

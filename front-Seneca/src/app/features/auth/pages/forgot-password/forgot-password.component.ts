@@ -38,7 +38,7 @@ export class ForgotPasswordComponent {
       this.hideAlert();
 
       this.authService.requestPasswordReset(this.forgotPasswordForm.value.email).subscribe({
-        next: () => {
+        next: (response) => {
           this.isLoading = false;
           this.showAlert('Se ha enviado un email con las instrucciones para restablecer tu contraseña.', 'success');
           setTimeout(() => {
@@ -47,7 +47,23 @@ export class ForgotPasswordComponent {
         },
         error: (error) => {
           this.isLoading = false;
-          this.showAlert('Error al enviar el email. Verifica que el email sea correcto.', 'error');
+
+          // Manejar diferentes tipos de errores
+          if (error.status === 404) {
+            this.showAlert('El email ingresado no está registrado en nuestro sistema.', 'error');
+          } else if (error.status === 400) {
+            this.showAlert('El formato del email no es válido.', 'error');
+          } else if (error.status === 500) {
+            this.showAlert('Error en el servidor. Intenta nuevamente más tarde.', 'error');
+          } else if (error.error && error.error.message) {
+            // Si el backend devuelve un mensaje específico
+            this.showAlert(error.error.message, 'error');
+          } else if (error.message) {
+            // Si hay un mensaje de error general
+            this.showAlert(error.message, 'error');
+          } else {
+            this.showAlert('Error al enviar el email. Verifica que el email sea correcto.', 'error');
+          }
         }
       });
     }

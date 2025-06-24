@@ -1,4 +1,5 @@
-import { HttpInterceptorFn } from '@angular/common/http';
+import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
+import { catchError, throwError } from 'rxjs';
 
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
   const token = sessionStorage.getItem('auth_token');
@@ -7,5 +8,11 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
       setHeaders: { Authorization: `Bearer ${token}` }
     });
   }
-  return next(req);
+
+  return next(req).pipe(
+    catchError((error: HttpErrorResponse) => {
+      // Propagar el error para que el componente pueda manejarlo
+      return throwError(() => error);
+    })
+  );
 };

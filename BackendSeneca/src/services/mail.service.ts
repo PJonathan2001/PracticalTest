@@ -5,6 +5,7 @@ class MailService {
   static async sendMail(to: string, subject: string, html: string) {
     let transporter;
     let isEthereal = false;
+    
     if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
       transporter = nodemailer.createTransport({
         host: process.env.SMTP_HOST,
@@ -17,6 +18,7 @@ class MailService {
       });
     } else {
       // Ethereal para desarrollo
+      console.log('⚠️  Usando Ethereal para envío de correos (modo desarrollo)');
       const testAccount = await nodemailer.createTestAccount();
       transporter = nodemailer.createTransport({
         host: testAccount.smtp.host,
@@ -29,6 +31,7 @@ class MailService {
       });
       isEthereal = true;
     }
+    
     try {
       const info = await transporter.sendMail({
         from: config.emailFrom,
@@ -36,15 +39,32 @@ class MailService {
         subject,
         html,
       });
+      
       if (isEthereal) {
         const url = nodemailer.getTestMessageUrl(info);
-        if (url) {
-          // Puedes usar el url para debugging en desarrollo si lo necesitas
+        console.log('📧 Correo enviado (Ethereal):', url);
+        console.log('📧 Message ID:', info.messageId);
+      } else {
+        console.log('📧 Correo enviado exitosamente a:', to);
+        console.log('📧 Message ID:', info.messageId);
+      }
+      
+      return info;
+    } catch (err) {
+      console.error('❌ Error enviando correo:', err);
+      
+      // Proporcionar información más específica del error
+      if (err instanceof Error) {
+        if (err.message.includes('Invalid login')) {
+          throw new Error('Credenciales de correo inválidas. Verifica SMTP_USER y SMTP_PASS.');
+        } else if (err.message.includes('Connection timeout')) {
+          throw new Error('Timeout de conexión con el servidor de correo. Verifica SMTP_HOST y SMTP_PORT.');
+        } else if (err.message.includes('Authentication failed')) {
+          throw new Error('Autenticación fallida con el servidor de correo.');
         }
       }
-    } catch (err) {
-      console.error('Error enviando correo:', err);
-      throw err;
+      
+      throw new Error('Error al enviar el correo: ' + (err instanceof Error ? err.message : 'Error desconocido'));
     }
   }
 }

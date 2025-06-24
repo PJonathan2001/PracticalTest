@@ -14,6 +14,12 @@ Contraseña: admin123
 - Node.js 20+
 - Angular 19
 - Backend corriendo en `http://localhost:3000`
+### Instalación de Angular (en caso de no tener)
+```bash
+npm install -g @angular/cli
+# En caso de usar otra otro gestor de paquetes ver https://angular.dev/installation
+```
+
 
 ### Instalación
 ```bash

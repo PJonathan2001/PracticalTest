@@ -1,0 +1,153 @@
+/* Alert Component Styles */
+
+/* Base alert styles */
+.alert {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  animation: slideInDown 0.3s ease-out;
+}
+
+/* Alert type variations */
+.alert-success {
+  background-color: #d1fae5;
+  border-color: #10b981;
+  color: #065f46;
+}
+
+.alert-error {
+  background-color: #fee2e2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+.alert-warning {
+  background-color: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+.alert-info {
+  background-color: #dbeafe;
+  border-color: #3b82f6;
+  color: #1e40af;
+}
+
+/* Alert content layout */
+.alert .flex {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.alert .flex-1 {
+  flex: 1;
+  word-wrap: break-word;
+}
+
+/* Dismiss button styles */
+.alert .btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: auto;
+  height: auto;
+}
+
+.alert .btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.alert .btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Alert animations */
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Alert exit animation */
+.alert.alert-exit {
+  animation: slideOutUp 0.3s ease-in forwards;
+}
+
+@keyframes slideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .alert {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .alert .flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .alert .btn {
+    align-self: flex-end;
+  }
+}
+
+/* Icon styles for different alert types */
+.alert-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.alert-success .alert-icon {
+  color: #10b981;
+}
+
+.alert-error .alert-icon {
+  color: #ef4444;
+}
+
+.alert-warning .alert-icon {
+  color: #f59e0b;
+}
+
+.alert-info .alert-icon {
+  color: #3b82f6;
+}
+
+/* Hover effects */
+.alert:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Focus states for accessibility */
+.alert:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}

@@ -1,0 +1,108 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div class="text-center">
+      <!-- Success Icon -->
+      <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100">
+        <svg class="h-8 w-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+      </div>
+
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        ¡Registro Exitoso! 🎉
+      </h2>
+
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Tu cuenta ha sido creada correctamente. Ahora necesitas activarla.
+      </p>
+    </div>
+
+    <!-- Instructions -->
+    <div class="bg-white shadow rounded-lg p-6">
+      <h3 class="text-lg font-medium text-gray-900 mb-4">Próximos Pasos:</h3>
+
+      <div class="space-y-4">
+        <div class="flex items-start">
+          <div class="flex-shrink-0">
+            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+              <span class="text-blue-600 text-sm font-medium">1</span>
+            </div>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-gray-700">
+              <strong>Revisa tu email</strong> - Hemos enviado un enlace de activación a tu dirección de correo electrónico.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start">
+          <div class="flex-shrink-0">
+            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+              <span class="text-blue-600 text-sm font-medium">2</span>
+            </div>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-gray-700">
+              <strong>Haz clic en el enlace</strong> - El enlace activará tu cuenta automáticamente.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start">
+          <div class="flex-shrink-0">
+            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+              <span class="text-blue-600 text-sm font-medium">3</span>
+            </div>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-gray-700">
+              <strong>Inicia sesión</strong> - Una vez activada, podrás acceder a tu cuenta.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Important Notes -->
+      <div class="mt-6 bg-yellow-50 border border-yellow-200 rounded-md p-4">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h4 class="text-sm font-medium text-yellow-800">Importante:</h4>
+            <div class="mt-2 text-sm text-yellow-700">
+              <ul class="list-disc list-inside space-y-1">
+                <li>Si no encuentras el email, revisa tu carpeta de spam</li>
+                <li>El enlace de activación expira en 24 horas</li>
+                <li>No compartas el enlace con nadie</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="space-y-4">
+      <button
+        (click)="goToLogin()"
+        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        Ir al Login
+      </button>
+
+     
+    </div>
+
+    <!-- Help Section -->
+    <div class="text-center">
+      <p class="text-sm text-gray-500">
+        ¿Necesitas ayuda?
+        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+          Contacta soporte
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

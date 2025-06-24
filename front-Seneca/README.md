@@ -4,7 +4,7 @@ Sistema de autenticación y gestión de usuarios en Angular 19.
 
 ### Usuario por defecto
 ```
-Email: admin@seneca.com
+Email: admin@testseneca.com
 Contraseña: admin123
 ```
 

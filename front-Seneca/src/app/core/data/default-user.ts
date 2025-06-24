@@ -2,10 +2,10 @@ import { User } from '../models/user.model';
 
 export const DEFAULT_USER: User = {
   id: '1',
-  email: 'admin@seneca.com',
+  email: 'admin@testseneca.com',
   password: 'admin123',
-  firstName: 'Administrador',
-  lastName: 'Sistema',
+  firstName: 'Admin',
+  lastName: 'Default',
   address: 'Calle Principal #123, Ciudad, País',
   birthDate: '1990-01-01T00:00:00.000Z',
   isActive: true,

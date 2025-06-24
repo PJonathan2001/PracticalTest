@@ -45,6 +45,8 @@ userSchema.statics.createDefaultUser = async function () {
       password: hash,
       firstName: 'Admin',
       lastName: 'Default',
+      address: 'Avenida Siempre Viva',
+      birthDate: new Date('1990-01-01'),
       isActive: true,
     });
   }

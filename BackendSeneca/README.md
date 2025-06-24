@@ -34,13 +34,6 @@ EMAIL_FROM=tu_email@gmail.com
 
 
 
-```
-
-### 3. Configurar URLs (opcional)
-En `src/config/default.ts` puedes cambiar:
-- `baseUrl`: URL del backend (por defecto: http://localhost:3000)
-- `frontendUrl`: URL del frontend (por defecto: http://localhost:4200)
-- `corsOrigin`: Origen permitido para CORS
 
 
 

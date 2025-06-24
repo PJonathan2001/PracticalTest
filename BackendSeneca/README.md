@@ -32,13 +32,7 @@ En `src/config/default.ts` puedes cambiar:
 - `frontendUrl`: URL del frontend (por defecto: http://localhost:4200)
 - `corsOrigin`: Origen permitido para CORS
 
-### 4. Ejecutar
-```bash
 
-# Desarrollador
-npm run build
-npm start
-```
 
 ## 📧 Configuración SMTP con Google
 
@@ -57,25 +51,10 @@ SMTP_USER=tu_email@gmail.com
 SMTP_PASS=abcd efgh ijkl mnop  # La contraseña de aplicación debe ir unida
 ```
 
-## 📚 API Endpoints
-
-### Autenticación
-- `POST /api/auth/register` - Registro
-- `POST /api/auth/login` - Login
-- `GET /api/auth/me` - Usuario actual
-- `POST /api/auth/logout` - Cerrar sesión
-- `GET /api/auth/activate/:token` - Activar cuenta
-- `POST /api/auth/forgot-password` - Solicitar reset
-- `POST /api/auth/reset-password/:token` - Resetear contraseña
-
-### Usuarios
-- `GET /api/users/me` - Perfil
-- `PUT /api/users/me` - Actualizar perfil
-- `GET /api/users/login-history` - Historial de login
-
-## 🔧 Scripts
+### 4. Ejecutar
 ```bash
-npm run dev    # Desarrollo
-npm run build  # Compilar
-npm start      # Producción
-``` 
+
+# Desarrollador
+npm run build
+npm start
+```

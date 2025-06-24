@@ -19,7 +19,9 @@ Contraseña: admin123
 ```bash
 npm install
 # Se creará automáticamente la carpeta environments con la conexión al backend
+# Cambiar el puerto si es necesario
 ```
+
 
 ### Ejecutar
 ```bash

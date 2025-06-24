@@ -1,75 +1,325 @@
-/* Register Component Styles */
+/* Simple Register Component */
 
-/* Form animations */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  padding: 15px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.register-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.register-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.register-subtitle {
+  font-size: 14px;
+  color: #718096;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
 .form-group {
-  transition: all 0.3s ease;
+  position: relative;
 }
 
-/* Input focus effects */
-input:focus {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
-}
-
-/* Button hover effects */
-button[type="submit"] {
-  transition: all 0.3s ease;
-}
-
-button[type="submit"]:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
-}
-
-/* Checkbox styling */
-input[type="checkbox"] {
+.input-container {
+  position: relative;
+  background: #fafafa;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
   transition: all 0.2s ease;
 }
 
-input[type="checkbox"]:checked {
-  background-color: #6366f1;
-  border-color: #6366f1;
+.input-container:hover {
+  border-color: #cbd5e0;
+  background: #f7fafc;
 }
 
-/* Error message animations */
-.text-red-600 {
-  animation: shake 0.5s ease-in-out;
+.input-container:focus-within {
+  border-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0aec0;
+  z-index: 2;
+  transition: color 0.2s ease;
+  width: 16px;
+  height: 16px;
 }
 
-/* Grid responsive adjustments */
-@media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+.input-container:focus-within .input-icon {
+  color: #667eea;
 }
 
-/* Link hover effects */
-a {
+.form-input {
+  width: 100%;
+  padding: 12px 12px 12px 36px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #2d3748;
+  outline: none;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+}
+
+.form-input::placeholder {
+  color: #a0aec0;
+  font-weight: 400;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.error-message {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #e53e3e;
+  font-weight: 500;
+}
+
+.terms-container {
+  margin: 16px 0;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  font-size: 13px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #f7fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.checkbox-container:hover .checkmark {
+  border-color: #cbd5e0;
+  background-color: #edf2f7;
+}
+
+.checkbox-input:checked ~ .checkmark {
+  background-color: #667eea;
+  border-color: #667eea;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 7px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.terms-text {
+  margin-left: 6px;
+}
+
+.terms-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
   transition: color 0.2s ease;
 }
 
-a:hover {
+.terms-link:hover {
+  color: #5a67d8;
   text-decoration: underline;
 }
 
-/* Form validation visual feedback */
-input.ng-invalid.ng-touched {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  background: #667eea;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.25);
 }
 
-input.ng-valid.ng-touched {
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+.submit-button:hover:not(:disabled) {
+  background: #5a67d8;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.35);
+  transform: translateY(-1px);
 }
 
-/* Loading state */
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.divider span {
+  background: #ffffff;
+  padding: 0 12px;
+  color: #718096;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.login-link {
+  text-align: center;
+  font-size: 13px;
+  color: #718096;
+  font-weight: 400;
+}
+
+.login-button {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.login-button:hover {
+  color: #5a67d8;
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .register-card {
+    padding: 25px 20px;
+    margin: 8px;
+  }
+
+  .register-title {
+    font-size: 24px;
+  }
+
+  .form-input {
+    padding: 10px 10px 10px 32px;
+    font-size: 14px;
+  }
+
+  .submit-button {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    padding: 10px;
+  }
+
+  .register-card {
+    padding: 20px 15px;
+  }
+
+  .register-title {
+    font-size: 22px;
+  }
+
+  .register-subtitle {
+    font-size: 13px;
+  }
+
+  .register-form {
+    gap: 14px;
+  }
+}
+
+/* Loading states */
 .loading-overlay {
   position: relative;
 }
@@ -81,28 +331,18 @@ input.ng-valid.ng-touched {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Password strength indicator */
-.password-strength {
-  height: 4px;
-  border-radius: 2px;
-  margin-top: 4px;
-  transition: all 0.3s ease;
+/* Form validation styles */
+.form-input.ng-invalid.ng-touched {
+  border-color: #e53e3e;
 }
 
-.password-strength.weak {
-  background: linear-gradient(to right, #ef4444 0%, #ef4444 33%, #e5e7eb 33%, #e5e7eb 100%);
-}
-
-.password-strength.medium {
-  background: linear-gradient(to right, #f59e0b 0%, #f59e0b 66%, #e5e7eb 66%, #e5e7eb 100%);
-}
-
-.password-strength.strong {
-  background: linear-gradient(to right, #10b981 0%, #10b981 100%);
+.form-input.ng-valid.ng-touched {
+  border-color: #48bb78;
 }

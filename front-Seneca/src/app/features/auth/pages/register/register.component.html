@@ -1,12 +1,8 @@
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8">
-    <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Crear Cuenta
-      </h2>
-      <p class="mt-2 text-center text-sm text-gray-600">
-        Completa el formulario para crear tu cuenta. Recibirás un email de activación.
-      </p>
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <h1 class="register-title">Crear Cuenta</h1>
+      <p class="register-subtitle">Completa el formulario para crear tu cuenta. Recibirás un email de activación.</p>
     </div>
 
     <app-alert
@@ -16,126 +12,174 @@
       (dismiss)="hideAlert()">
     </app-alert>
 
-    <form class="mt-8 space-y-6" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <div class="space-y-4">
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div>
-            <label for="firstName" class="block text-sm font-medium text-gray-700">Nombres *</label>
+    <form class="register-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <div class="input-container">
+            <div class="input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+            </div>
             <input
               id="firstName"
               type="text"
               formControlName="firstName"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 placeholder-gray-500"
-              placeholder="Tu nombre">
-            <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="mt-1 text-sm text-red-600">
-              <span *ngIf="registerForm.get('firstName')?.errors?.['required']">El nombre es requerido</span>
-              <span *ngIf="registerForm.get('firstName')?.errors?.['minlength']">El nombre debe tener al menos 2 caracteres</span>
-            </div>
+              class="form-input"
+              placeholder="Tu nombre"
+              autocomplete="given-name">
           </div>
+          <div *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="error-message">
+            <span *ngIf="registerForm.get('firstName')?.errors?.['required']">El nombre es requerido</span>
+            <span *ngIf="registerForm.get('firstName')?.errors?.['minlength']">El nombre debe tener al menos 2 caracteres</span>
+          </div>
+        </div>
 
-          <div>
-            <label for="lastName" class="block text-sm font-medium text-gray-700">Apellidos *</label>
+        <div class="form-group">
+          <div class="input-container">
+            <div class="input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+              </svg>
+            </div>
             <input
               id="lastName"
               type="text"
               formControlName="lastName"
-              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 placeholder-gray-500"
-              placeholder="Tu apellido">
-            <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="mt-1 text-sm text-red-600">
-              <span *ngIf="registerForm.get('lastName')?.errors?.['required']">El apellido es requerido</span>
-              <span *ngIf="registerForm.get('lastName')?.errors?.['minlength']">El apellido debe tener al menos 2 caracteres</span>
-            </div>
+              class="form-input"
+              placeholder="Tu apellido"
+              autocomplete="family-name">
+          </div>
+          <div *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="error-message">
+            <span *ngIf="registerForm.get('lastName')?.errors?.['required']">El apellido es requerido</span>
+            <span *ngIf="registerForm.get('lastName')?.errors?.['minlength']">El apellido debe tener al menos 2 caracteres</span>
           </div>
         </div>
+      </div>
 
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email *</label>
+      <div class="form-group">
+        <div class="input-container">
+          <div class="input-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
+            </svg>
+          </div>
           <input
             id="email"
             type="email"
             formControlName="email"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 placeholder-gray-500"
-            placeholder="tu@email.com">
-          <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="mt-1 text-sm text-red-600">
-            <span *ngIf="registerForm.get('email')?.errors?.['required']">El email es requerido</span>
-            <span *ngIf="registerForm.get('email')?.errors?.['email']">Ingresa un email válido</span>
-          </div>
+            class="form-input"
+            placeholder="tu@email.com"
+            autocomplete="email">
         </div>
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+          <span *ngIf="registerForm.get('email')?.errors?.['required']">El email es requerido</span>
+          <span *ngIf="registerForm.get('email')?.errors?.['email']">Ingresa un email válido</span>
+        </div>
+      </div>
 
-        <div>
-          <label for="password" class="block text-sm font-medium text-gray-700">Contraseña *</label>
+      <div class="form-group">
+        <div class="input-container">
+          <div class="input-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
           <input
             id="password"
             type="password"
             formControlName="password"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 placeholder-gray-500"
-            placeholder="Mínimo 6 caracteres">
-          <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="mt-1 text-sm text-red-600">
-            <span *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es requerida</span>
-            <span *ngIf="registerForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</span>
-          </div>
+            class="form-input"
+            placeholder="Mínimo 6 caracteres"
+            autocomplete="new-password">
         </div>
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+          <span *ngIf="registerForm.get('password')?.errors?.['required']">La contraseña es requerida</span>
+          <span *ngIf="registerForm.get('password')?.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</span>
+        </div>
+      </div>
 
-        <div>
-          <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirmar Contraseña *</label>
+      <div class="form-group">
+        <div class="input-container">
+          <div class="input-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
           <input
             id="confirmPassword"
             type="password"
             formControlName="confirmPassword"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 placeholder-gray-500"
-            placeholder="Confirma tu contraseña">
-          <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched" class="mt-1 text-sm text-red-600">
-            Las contraseñas no coinciden
-          </div>
+            class="form-input"
+            placeholder="Confirma tu contraseña"
+            autocomplete="new-password">
         </div>
+        <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched" class="error-message">
+          Las contraseñas no coinciden
+        </div>
+      </div>
 
-        <div>
-          <label for="address" class="block text-sm font-medium text-gray-700">Dirección</label>
+      <div class="form-group">
+        <div class="input-container">
+          <div class="input-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
           <input
             id="address"
             type="text"
             formControlName="address"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 placeholder-gray-500"
-            placeholder="Dirección (opcional)">
+            class="form-input"
+            placeholder="Dirección (opcional)"
+            autocomplete="street-address">
         </div>
+      </div>
 
-        <div>
-          <label for="birthDate" class="block text-sm font-medium text-gray-700">Fecha de Nacimiento</label>
+      <div class="form-group">
+        <div class="input-container">
+          <div class="input-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+          </div>
           <input
             id="birthDate"
             type="date"
             formControlName="birthDate"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-gray-900 placeholder-gray-500"
+            class="form-input"
             placeholder="Fecha de nacimiento">
         </div>
       </div>
 
       <!-- Términos y condiciones -->
-      <div class="flex items-center">
-        <input
-          id="terms"
-          type="checkbox"
-          [(ngModel)]="acceptTerms"
-          [ngModelOptions]="{standalone: true}"
-          class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-        <label for="terms" class="ml-2 block text-sm text-gray-900">
-          Acepto los <a href="#" class="text-indigo-600 hover:text-indigo-500">términos y condiciones</a>
+      <div class="terms-container">
+        <label class="checkbox-container">
+          <input
+            id="terms"
+            type="checkbox"
+            [(ngModel)]="acceptTerms"
+            [ngModelOptions]="{standalone: true}"
+            class="checkbox-input">
+          <span class="checkmark"></span>
+          <span class="terms-text">
+            Acepto los <a href="#" class="terms-link">términos y condiciones</a>
+          </span>
         </label>
       </div>
 
-      <div>
-        <button
-          type="submit"
-          [disabled]="registerForm.invalid || isLoading || !acceptTerms"
-          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50">
-          <app-loading [isLoading]="isLoading" message="Creando cuenta..."></app-loading>
-          <span *ngIf="!isLoading">Crear Cuenta</span>
-        </button>
-      </div>
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid || isLoading || !acceptTerms"
+        class="submit-button">
+        <app-loading [isLoading]="isLoading" message="Creando cuenta..."></app-loading>
+        <span *ngIf="!isLoading">Crear Cuenta</span>
+      </button>
 
-      <div class="text-center">
-        <span class="text-sm text-gray-600">¿Ya tienes cuenta? </span>
-        <a routerLink="/auth/login" class="font-medium text-indigo-600 hover:text-indigo-500">
+      <div class="login-link">
+        <span>¿Ya tienes cuenta? </span>
+        <a routerLink="/auth/login" class="login-button">
           Inicia sesión aquí
         </a>
       </div>

@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
     message: '',
     type: 'info' as AlertType
   };
-  welcomeMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -53,10 +52,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(email, password).subscribe({
         next: ({ user }) => {
           this.isLoading = false;
-          const lastLogin = user.lastLogin ? new Date(user.lastLogin).toLocaleString() : 'Nunca';
-          const days = user.daysSinceLastLogin ?? 0;
-          this.welcomeMessage = `Bienvenido ${user.firstName}, tu último login fue ${lastLogin} hace ${days} días`;
-          setTimeout(() => this.router.navigate(['/dashboard']), 2000);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           this.isLoading = false;

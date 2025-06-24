@@ -1,59 +1,227 @@
-/* Login Component Styles */
+/* Simple Login Component */
 
-/* Form animations */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  padding: 20px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.login-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .form-group {
-  transition: all 0.3s ease;
+  position: relative;
 }
 
-/* Input focus effects */
-input:focus {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
+.input-container {
+  position: relative;
+  background: #fafafa;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  transition: all 0.2s ease;
 }
 
-/* Button hover effects */
-button[type="submit"] {
-  transition: all 0.3s ease;
+.input-container:hover {
+  border-color: #cbd5e0;
+  background: #f7fafc;
 }
 
-button[type="submit"]:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+.input-container:focus-within {
+  border-color: #667eea;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/* Welcome message animation */
-.welcome-message {
-  animation: slideInUp 0.5s ease-out;
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Link hover effects */
-a {
+.input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0aec0;
+  z-index: 2;
   transition: color 0.2s ease;
 }
 
-a:hover {
+.input-container:focus-within .input-icon {
+  color: #667eea;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: #2d3748;
+  outline: none;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+}
+
+.form-input::placeholder {
+  color: #a0aec0;
+  font-weight: 400;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.form-options {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -8px;
+}
+
+.forgot-link {
+  font-size: 14px;
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+  color: #5a67d8;
   text-decoration: underline;
 }
 
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .max-w-md {
-    margin: 1rem;
+.submit-button {
+  width: 100%;
+  padding: 16px;
+  background: #667eea;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.25);
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #5a67d8;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.35);
+  transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: 24px 0;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.divider span {
+  background: #ffffff;
+  padding: 0 16px;
+  color: #718096;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.register-link {
+  text-align: center;
+  font-size: 14px;
+  color: #718096;
+  font-weight: 400;
+}
+
+.register-button {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.register-button:hover {
+  color: #5a67d8;
+  text-decoration: underline;
+}
+
+.welcome-message {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(72, 187, 120, 0.25);
+  animation: slideInUp 0.3s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+
+  .login-title {
+    font-size: 28px;
+  }
+
+  .form-input {
+    padding: 14px 14px 14px 44px;
+  }
+
+  .submit-button {
+    padding: 14px;
   }
 }
 
-/* Loading state */
+/* Loading states */
 .loading-overlay {
   position: relative;
 }
@@ -65,8 +233,18 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Form validation styles */
+.form-input.ng-invalid.ng-touched {
+  border-color: #e53e3e;
+}
+
+.form-input.ng-valid.ng-touched {
+  border-color: #48bb78;
 }

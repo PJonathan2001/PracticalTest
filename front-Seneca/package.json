@@ -2,6 +2,7 @@
   "name": "front-seneca",
   "version": "0.0.0",
   "scripts": {
+    "postinstall": "copy src\\environments\\environment.example.ts src\\environments\\environment.ts",
     "prestart": "cp src/environments/environment.example.ts src/environments/environment.ts",
     "prebuild": "cp src/environments/environment.prod.example.ts src/environments/environment.prod.ts",
     "ng": "ng",

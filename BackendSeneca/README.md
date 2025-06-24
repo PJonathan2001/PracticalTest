@@ -23,6 +23,7 @@ BASE_URL=http://localhost:3000
 FRONTEND_URL=http://localhost:4200
 JWT_EXPIRES_IN=24h
 JWT_SECRET=supersecreto
+CORS_ORIGIN=http://localhost:4200
 
 # Configuración de email (SMTP con Google)
 EMAIL_FROM=no-reply@tuapp.com

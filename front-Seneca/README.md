@@ -103,6 +103,17 @@ npm install
 npm start
 ```
 
+### Configuración Automática de Environments
+
+El proyecto incluye configuración automática de archivos de environment:
+
+- **Automático**: Al ejecutar `npm install`, se crean automáticamente los archivos `environment.ts` y `environment.prod.ts`
+- **Manual**: Si necesitas recrear los archivos, ejecuta `npm run setup`
+
+Los archivos se crean basándose en:
+- `environment.example.ts` → `environment.ts` (desarrollo)
+- `environment.prod.example.ts` → `environment.prod.ts` (producción)
+
 ## 📋 Rutas de la Aplicación
 
 ### Rutas Públicas
